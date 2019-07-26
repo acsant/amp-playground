@@ -19,6 +19,9 @@ app.enable('trust proxy');
 app.set('etag', false);
 app.set( 'port', ( process.env.PORT || 8080 ));
 app.use('/', express.static(path.join(__dirname, 'public'), options))
+app.get('/auth', (req, res) => {
+  res.json({ access: Math.random() >= 0.5 })
+})
 
 const server = app.listen( app.get('port'), function(error) {
   if (error) {
