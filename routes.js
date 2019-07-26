@@ -13,7 +13,7 @@ module.exports = function (app) {
     if (responseCode == 200) {
       res.status(200).sendfile('amp.html', { root: './public' });
     } else {
-      res.redirect('/');
+      res.status(301).redirect('/');
     }
   });
 
