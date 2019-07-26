@@ -10,7 +10,7 @@ module.exports = function (app) {
 
   app.get('/amp', function(req, res) {
     const responseCode = process.env.STATUS_CODE || 200;
-    if (responseCode === 200) {
+    if (responseCode == 200) {
       res.status(200).sendfile('amp.html', { root: './public' });
     } else {
       res.redirect('/');
