@@ -6,6 +6,7 @@ const cors = require('cors')
 dotenv.config({ path: '.env' });
 
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 const options = {
@@ -14,6 +15,22 @@ const options = {
       res.set('Last-Timestamp', Date.now())
     }
 };
+
+var whitelist = ['https://amp-playground.herokuapp.com',
+                  'https://google.com',
+                  'https://amp.dev',
+                  'https://amp--playground-herokuapp-com.cdn.ampproject.org'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions));
 
 app.use(cors())
 app.enable('trust proxy');
