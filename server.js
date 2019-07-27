@@ -2,6 +2,7 @@
 
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = require('cors')
 dotenv.config({ path: '.env' });
 
 const express = require('express');
@@ -14,6 +15,7 @@ const options = {
     }
 };
 
+app.use(cors())
 app.enable('trust proxy');
 
 app.set('etag', false);
