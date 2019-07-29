@@ -19,18 +19,18 @@ var whitelist = ['https://amp-playground.herokuapp.com',
                   'https://google.com',
                   'https://amp.dev',
                   'https://amp--playground-herokuapp-com.cdn.ampproject.org'];
-var corsOptions = {
-  origin: function (origin, callback) {
-    console.info(`Request from origin ${origin}`);
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
 
-app.use(cors(corsOptions));
+const corsOptionsDeligate = function (req, callback) {
+  let corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+};
+
+app.use(cors(corsOptionsDeligate));
 
 app.use(cors());
 // Configure AMP CORS
