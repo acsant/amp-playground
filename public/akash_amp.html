@@ -1,0 +1,47 @@
+<!doctype html>
+<html ⚡ lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="This is the AMP Boilerplate.">
+    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>
+    <!-- Import other AMP Extensions here -->
+    <style amp-custom>
+/* Add your styles here */
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal
+both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s
+steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal
+both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes
+-amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes
+-amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes
+-amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes
+-amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style
+                  amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+  <script id="amp-access" type="application/json">
+    {
+      "authorization": "https://amp-playground.herokuapp.com/auth",
+      "noPingback": true,
+      "type": "server"
+    }
+  </script>
+  <link rel="canonical" href="https://amp-playground.herokuapp.com/akash">
+  <title>Personal AMP playground</title>
+  </head>
+  <body>
+    <div>
+      Welcome to my amp playground
+    </div>
+    <div style="height:100px">
+      <div>Don't hide this section by default</div>
+      <div amp-access="access">YOU HAVE ACCESS!!</div>
+      <div amp-access="NOT access">YOU DO NOT HAVE ACCESS!!</div>
+    </div>
+    <div>Hide this section by default</div>
+    <div amp-access="access" amp-access-hide>YOU HAVE ACCESS!!</div>
+    <div amp-access="NOT access" amp-access-hide>YOU DO NOT HAVE ACCESS!!</div>
+  </body>
+</html>
