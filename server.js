@@ -22,7 +22,9 @@ var whitelist = ['https://amp-playground.herokuapp.com',
 
 const corsOptionsDeligate = function (req, callback) {
   let corsOptions;
-  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+  const origin = req.header('Origin');
+  console.info(`Incoming request from ${origin}`);
+  if (whitelist.indexOf(origin) !== -1) {
     corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
   } else {
     corsOptions = { origin: false } // disable CORS for this request
