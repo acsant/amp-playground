@@ -2,7 +2,6 @@
 
 const dotenv = require('dotenv');
 const path = require('path');
-const cors = require('cors')
 dotenv.config({ path: '.env' });
 
 const express = require('express');
@@ -22,8 +21,9 @@ var whitelist = ['https://amp-playground.herokuapp.com',
                   'https://amp--playground-herokuapp-com.cdn.ampproject.org'];
 var corsOptions = {
   origin: function (origin, callback) {
+    console.info(`Request from origin ${origin}`);
     if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
+      callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'))
     }
@@ -32,7 +32,16 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(cors())
+app.use(cors());
+// Configure AMP CORS
+app.use(function (req, res, next) {
+  res.setHeader('access-control-allow-credentials', true);
+  res.setHeader('access-control-allow-origin', req.header('Origin') || 'https://amp-playground.herokuapp.com');
+  res.setHeader('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
+  res.setHeader('amp-access-control-allow-source-origin', req.header('Origin') || 'https://amp-playground.herokuapp.com');
+  res.setHeader('cache-control', 'max-age=0, no-cache, no-store, private');
+  next();
+});
 app.enable('trust proxy');
 
 app.set('etag', false);
