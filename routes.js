@@ -16,8 +16,10 @@ module.exports = function (app) {
     const statusCode = process.env.STATUS_CODE || 200;
     if (statusCode == 200) {
       res.status(200).sendFile('akash_amp.html', { root: './public' });
-    } else {
+    } else if (statusCode == 301) {
       res.redirect(301, '/akash');
+    } else {
+      res.status(404).send('not found');
     }
   });
 
@@ -25,8 +27,10 @@ module.exports = function (app) {
     const statusCode = process.env.STATUS_CODE || 200;
     if (statusCode == 200) {
       res.status(200).sendFile('akash_index.html', { root: './public' });
+    } else if (statusCode == 301) {
+      res.status(301).sendFile('index_unlinked.html', { root: './public' });
     } else {
-      res.status(200).sendFile('index_unlinked.html', { root: './public' });
+      res.status(404).send('not found');
     }
   });
 
