@@ -42,6 +42,7 @@ module.exports = function (app) {
   });
 
   app.get('/.well-known/amphtml/apikey.pub', function(req, res) {
+    res.setHeader('Content-Type', 'text/plain');
     res.send(staticPublicKey, { 'Content-Type': 'text/plain' }, 200);
   });
 
