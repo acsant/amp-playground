@@ -2,11 +2,11 @@
 <html ⚡ lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This is the AMP Boilerplate.">
     <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>
+    <script async custom-element="amp-img" src="https://cdn.ampproject.org/v0/amp-img-0.1.js"></script>
     <!-- Import other AMP Extensions here -->
     <style amp-custom>
 /* Add your styles here */
@@ -29,5 +29,9 @@ both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}
       Welcome to my amp playground
       Akash
     </div>
+    <div>
+      <amp-img src="https://picsum.photos/300/600" layout="fixed" height="600" width="300"></amp-img>
+    </div>
+    <a href="https://picsum.photos/300/600">Get a random picture each time</a>
   </body>
 </html>
