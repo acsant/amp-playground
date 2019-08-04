@@ -41,7 +41,7 @@ app.use(function (req, res, next) {
   res.setHeader('access-control-allow-origin', req.header('Origin') || 'https://amp-playground.herokuapp.com');
   res.setHeader('access-control-expose-headers', 'AMP-Access-Control-Allow-Source-Origin');
   res.setHeader('amp-access-control-allow-source-origin', req.header('Origin') || 'https://amp-playground.herokuapp.com');
-  res.setHeader('cache-control', 'max-age=0, no-cache, no-store, private');
+  res.setHeader('cache-control', 'max-age=1, no-cache, no-store, private');
   next();
 });
 app.enable('trust proxy');
