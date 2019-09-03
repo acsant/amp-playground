@@ -50,7 +50,7 @@ app.set('etag', false);
 app.set( 'port', ( process.env.PORT || 8080 ));
 app.use('/', express.static(path.join(__dirname, 'public'), options))
 app.get('/auth', (req, res) => {
-  console.log("hostname: ", req.hostname);
+  console.log("authorization hostname: ", req.hostname);
   res.json({ access: Math.random() >= 0.5 })
 })
 
